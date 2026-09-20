@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 140" role="img" aria-label="Aplica tu Seguro">
+  <path d="M60 5 L111 23 V71 c0 33-22 56-51 65C31 127 9 104 9 71 V23 Z" fill="#2C3E5D"/>
+  <path d="M60 19 L98 33 V71 c0 25-16 43-38 50-22-7-38-25-38-50V33 Z" fill="#FFFFFF"/>
+  <path d="M48 65 v-10 a12 12 0 0 1 24 0 v10" fill="none" stroke="#2C3E5D" stroke-width="9" stroke-linecap="round"/>
+  <rect x="37" y="63" width="46" height="37" rx="6" fill="#2C3E5D"/>
+  <circle cx="60" cy="84" r="11.5" fill="#FFFFFF"/>
+  <path d="M54.5 84.2 l4 4 7.2-8" fill="none" stroke="#22C55E" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M105 18 l3.6 9.4 9.4 3.6-9.4 3.6L105 44l-3.6-9.4L92 31l9.4-3.6Z" fill="#3B82F6"/>
+  <path d="M121.5 6 l2 5.2 5.2 2-5.2 2-2 5.2-2-5.2-5.2-2 5.2-2Z" fill="#3B82F6"/>
+  <path d="M120.5 45 l1.8 4.7 4.7 1.8-4.7 1.8-1.8 4.7-1.8-4.7-4.7-1.8 4.7-1.8Z" fill="#3B82F6"/>
+</svg>

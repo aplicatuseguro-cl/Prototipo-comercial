@@ -1,0 +1,4 @@
+node_modules/
+qa/
+qa-fallback/
+deck-fallback.html
