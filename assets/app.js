@@ -280,7 +280,7 @@ function fillBars(){
 function renderChat(){
   const m = $("#msgs");
   if (!state.chat.length){
-    m.innerHTML = aiBlock(`<p>Hola María. ${DEMO.agente.intro}</p>`);
+    m.innerHTML = aiBlock(`<p>¡Hola María! ${DEMO.agente.intro}</p>`);
   } else {
     m.innerHTML = state.chat.map(x => x.role === "me"
       ? `<div class="msg me">${x.text}</div>`
@@ -615,7 +615,10 @@ function renderPiloto(){
     <div class="eyebrow">Solicitar piloto</div>
     <p class="small" style="margin:10px 0 20px">Cuéntanos lo mínimo para preparar una propuesta de piloto a la medida.</p>
     <form class="stack-16" onsubmit="event.preventDefault();enviarPiloto()">
-      <div class="field"><label for="f1">Nombre y cargo</label><input id="f1" required placeholder="Ej. Gerente de Personas"></div>
+      <div class="grid-2" style="gap:14px">
+        <div class="field"><label for="f1">Nombre</label><input id="f1" required placeholder="Nombre y apellido"></div>
+        <div class="field"><label for="f1b">Cargo</label><input id="f1b" required placeholder="Ej. Gerente de Personas"></div>
+      </div>
       <div class="field"><label for="f2">Empresa</label><input id="f2" required placeholder="Nombre de la empresa"></div>
       <div class="grid-2" style="gap:14px">
         <div class="field"><label for="f3">N° de colaboradores</label>

@@ -125,7 +125,7 @@ const DEMO = {
   /* ---------------- Asistente ---------------- */
   agente: {
     nombre:"Asistente de coberturas",
-    intro:"Conozco las coberturas de tu familia y cómo se combinan. Pregúntame lo que necesites.",
+    intro:"¿Cómo te ayudo hoy? Pregúntame lo que necesites.",
     preguntas:[
       { id:"resonancia", hero:true,
         q:"Mi hija necesita una resonancia de rodilla. ¿Dónde me conviene hacerla y cuánto voy a pagar?",
@@ -249,9 +249,9 @@ const DEMO = {
   },
 
   valorEmpresa:[
-    { v:"$8,4 MM", k:"Beneficios de salud gestionados a través de la plataforma", n:"Suma de bonificaciones y reembolsos de coberturas ya contratadas" },
-    { v:"$2,1 MM", k:"Reembolsos identificados y gestionados", n:"Montos que los colaboradores recuperaron de sus pólizas" },
-    { v:"$1,18 MM", k:"Beneficios detectados antes de vencer", n:"Topes disponibles sin utilizar al cierre de la vigencia" }
+    { v:"$8.400.000", k:"Beneficios de salud gestionados a través de la plataforma", n:"Suma de bonificaciones y reembolsos de coberturas ya contratadas" },
+    { v:"$2.100.000", k:"Reembolsos identificados y gestionados", n:"Montos que los colaboradores recuperaron de sus pólizas" },
+    { v:"$1.180.000", k:"Beneficios detectados antes de vencer", n:"Topes disponibles sin utilizar al cierre de la vigencia" }
   ],
 
   privacidad:{
@@ -294,6 +294,7 @@ const DEMO = {
 
   piloto:{
     items:[
+      ["Firmar acuerdo de intención","Un documento breve que deja por escrito el alcance, los indicadores de éxito y las condiciones"],
       ["90 días","Duración de la hipótesis inicial de piloto"],
       ["Hasta 100 colaboradores","Grupo acotado, definido junto a Recursos Humanos"],
       ["Acceso familiar incluido","El grupo familiar del colaborador entra al piloto"],
