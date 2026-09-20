@@ -7,21 +7,25 @@ Mismo logo, paleta y tipografía que el prototipo comercial.
 
 | Archivo | Uso |
 |---|---|
-| `Aplica-tu-Seguro-Presentacion-Comercial.pptx` | Editable en PowerPoint / Keynote / Google Slides |
-| `Aplica-tu-Seguro-Presentacion-Comercial.pdf` | Para adjuntar al correo (2,2 MB, enlaces activos) |
+| `Aplica-tu-Seguro-Presentacion-Comercial-v2.pptx` | Editable en PowerPoint / Keynote / Google Slides |
+| `Aplica-tu-Seguro-Presentacion-Comercial-v2.pdf` | Para adjuntar al correo (2,3 MB, enlaces y QR activos) |
+
+La versión 1 fue retirada: contenía afirmaciones de resultado que no corresponden
+a una propuesta en validación.
 
 ## El relato
 
-| # | Slide | Qué hace |
+| # | Lámina | Qué hace |
 |---|---|---|
-| 1 | Portada | Promesa de marca |
-| 2 | El problema | María y sus cuatro coberturas: el dolor con cara |
-| 3 | Por qué pasa | La fragmentación, explicada en cuatro tarjetas |
-| 4 | La solución | Qué es Aplica tu Seguro + el caso de la resonancia |
-| 5 | Qué gana la empresa | Valor por audiencia + privacidad |
-| 6 | El prototipo | Enlace y código QR al prototipo navegable |
-| 7 | El piloto | 90 días, cuatro pasos, sin precio |
-| 8 | Cierre | La pregunta de cierre y los datos de contacto |
+| 1 | Portada | Promesa de marca · propuesta en validación |
+| 2 | El problema | María y sus cuatro coberturas, como caso ficticio |
+| 3 | Fragmentación | Las coberturas de una familia se administran por separado |
+| 4 | La solución | Qué es Aplica tu Seguro + el ejemplo ilustrativo de la resonancia |
+| 5 | Valor esperado | Hipótesis por audiencia + bloque de transparencia |
+| 6 | Privacidad | Qué no accede la empresa, qué podría recibir, y el mismo registro visto desde cada lado |
+| 7 | El prototipo | Enlace y código QR al prototipo navegable |
+| 8 | El piloto | 90 días, ocho componentes, sin precio y sin carta de intención |
+| 9 | Cierre | La pregunta de cierre, la invitación y los datos de contacto |
 
 Cada slide lleva **notas del presentador** con la intención y la objeción probable.
 
@@ -57,5 +61,7 @@ nombre y volver a generar.
 
 ## Datos
 
-Las cifras del ejemplo de la resonancia son **simuladas** y están marcadas como tales en la
-slide. La presentación no declara clientes, pilotos, resultados ni acuerdos existentes.
+Las cifras del ejemplo de la resonancia son **simuladas**, están marcadas como tales en la
+lámina y coinciden con el prototipo: Centro A $30.000, Centro B $25.000 y Centro C $35.000.
+La presentación no declara clientes, pilotos, resultados ni acuerdos existentes, y los
+beneficios están redactados como hipótesis a validar, no como resultados medidos.

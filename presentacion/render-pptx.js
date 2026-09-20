@@ -51,5 +51,5 @@ for (const spec of SLIDES) {
   if (spec.notes) s.addNotes(spec.notes);
 }
 
-pres.writeFile({ fileName: path.join(__dirname, 'Aplica-tu-Seguro-Presentacion-Comercial.pptx') })
+pres.writeFile({ fileName: path.join(__dirname, 'Aplica-tu-Seguro-Presentacion-Comercial-v2.pptx') })
   .then(f => console.log('PPTX:', f));

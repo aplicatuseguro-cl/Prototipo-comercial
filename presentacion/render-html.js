@@ -80,7 +80,7 @@ console.log('HTML:', out);
   await p.waitForTimeout(400);
 
   if (!FORCE_FALLBACK) {
-    await p.pdf({ path: path.join(__dirname, 'Aplica-tu-Seguro-Presentacion-Comercial.pdf'),
+    await p.pdf({ path: path.join(__dirname, 'Aplica-tu-Seguro-Presentacion-Comercial-v2.pdf'),
       width: `${SW}in`, height: `${SH}in`, printBackground: true, preferCSSPageSize: true });
     console.log('PDF creado');
   }
