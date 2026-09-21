@@ -1,9 +1,9 @@
 /* Aplica tu Seguro — presentación comercial v2.
    Una sola fuente para PPTX y PDF: coordenadas en pulgadas sobre 10 x 13.333 (vertical 3:4).
 
-   Las fotografías viven en franjas horizontales de ancho completo, siempre atenuadas
-   (velo oscuro sobre láminas navy, velo blanco sobre láminas claras) para que acompañen
-   al texto sin competir con él. Sus proporciones se preparan con `prep-fotos.py`. */
+   Las fotografías ocupan la lámina completa bajo un velo navy casi opaco (`fondo()`):
+   quedan como textura y el texto blanco manda. La única excepción es la portada, donde
+   la foto va en una franja horizontal. Los recortes se preparan con `prep-fotos.py`. */
 
 const NAVY='2C3E5D', DARK='16233A', BLUE='2F6FED', GREEN='16A34A', AMBER='B45309';
 const INK='0F172A', INK2='3F4A5C', INK3='6B7686';
@@ -26,10 +26,14 @@ const numDot = (x,y,n,{fill=NAVY,color=WHITE,d=0.34}={}) =>
 const nota = (t,{y=12.48,color=INK3,size=10.5,x=M,w=CW}={}) => txt(t,x,y,w,0.5,{size,color,lh:1.24});
 const regla = (y,{x=M,w=1.3,fill=BLUE}={}) => rect(x,y,w,0.05,{fill});
 
-/* Franja fotográfica: la foto más su velo. `veil` es el color del velo y
-   `alpha` su transparencia (a mayor alpha, más se ve la fotografía). */
+/* Fotografía con su velo encima. `veil` es el color del velo y `alpha` su
+   transparencia: a mayor alpha, más se ve la fotografía. */
 const franja = (src,y,h,{veil=WHITE,alpha=80}={}) =>
   [img(src,0,y,SW,h), rect(0,y,SW,h,{fill:veil,alpha})];
+
+/* Tratamiento estándar de las fotografías: lámina completa bajo un velo navy
+   casi opaco. La imagen queda como textura y el texto blanco manda. */
+const fondo = src => franja(src,0,SH,{veil:DARK,alpha:17});
 
 /* ------------------------------------------------------- 1 · PORTADA */
 const s1 = { bg:DARK, els:[
@@ -50,17 +54,17 @@ const p2 = [
   ['No sabe cuánto podría pagar antes de atenderse','El monto a pagar aparece recién al momento de la atención.'],
   ['Puede dejar vencer beneficios o reembolsos','Topes anuales sin usar y solicitudes incompletas que caducan.'],
 ];
-const s2 = { bg:WHITE, els:[
-  eyebrow('EL PROBLEMA · CASO FICTICIO'),
-  title('María y su familia tienen cuatro\ncoberturas de salud activas.',{size:26}),
-  ...franja('atacama.jpg',3.15,3.00,{alpha:78}),
-  txt('Cada una tiene condiciones, topes y procesos diferentes.',M,6.75,CW,0.4,{size:15,color:INK,bold:true}),
-  ...p2.flatMap(([h,d],i)=>{ const y=7.65+i*1.45; return [
-    ...numDot(M,y,String(i+1)),
-    txt(h,M+0.56,y-0.03,7.2,0.34,{size:14.5,bold:true,color:INK}),
-    txt(d,M+0.56,y+0.36,7.2,0.5,{size:12,color:INK3,lh:1.26}),
+const s2 = { bg:DARK, els:[
+  ...fondo('atacama-fondo.jpg'),
+  eyebrow('EL PROBLEMA · CASO FICTICIO',{color:STEEL}),
+  title('María y su familia tienen cuatro\ncoberturas de salud activas.',{size:26,color:WHITE}),
+  txt('Cada una tiene condiciones, topes y procesos diferentes.',M,5.15,CW,0.4,{size:15.5,color:WHITE,bold:true}),
+  ...p2.flatMap(([h,d],i)=>{ const y=6.2+i*1.62; return [
+    ...numDot(M,y,String(i+1),{fill:BLUE}),
+    txt(h,M+0.56,y-0.03,7.2,0.34,{size:14.5,bold:true,color:WHITE}),
+    txt(d,M+0.56,y+0.38,7.2,0.5,{size:12,color:ICE,lh:1.26}),
   ];}),
-  nota('María, su familia y sus pólizas son un caso ficticio construido para esta presentación. No representan datos ni estadísticas de ningún grupo de personas.'),
+  nota('María, su familia y sus pólizas son un caso ficticio construido para esta presentación. No representan datos ni estadísticas de ningún grupo de personas.',{color:STEEL}),
 ], notes:'No presentar estos problemas como estadísticas nacionales: son el caso de María.' };
 
 /* ------------------------------------------------------- 3 · FRAGMENTACIÓN */
@@ -97,7 +101,7 @@ VERBS.forEach(v=>{ const w=0.108*v.length+0.5;
 const CY=5.68, CHG=6.32;
 const OPTS=[['Centro A','$30.000',false],['Centro B','$25.000',true],['Centro C','$35.000',false]];
 const s4 = { bg:DARK, els:[
-  ...franja('patagonia-fondo.jpg',0,SH,{veil:DARK,alpha:17}),
+  ...fondo('patagonia-fondo.jpg'),
   eyebrow('LA SOLUCIÓN',{color:STEEL}),
   title('Aplica tu Seguro\nno es otro seguro.',{size:30,color:WHITE}),
   txt('Es una propuesta de plataforma que ayuda a entender y coordinar las coberturas que una persona y su familia ya poseen.',
@@ -201,36 +205,38 @@ const s7 = { bg:WHITE, els:[
 const P8 = ['90 días','Hasta 100 colaboradores','Acceso familiar incluido','Onboarding acompañado',
             'Medición de adopción','Medición de utilización','Dashboard corporativo agregado',
             'Criterios de éxito acordados con la empresa'];
-const s8 = { bg:WHITE, els:[
-  eyebrow('EL PILOTO'),
-  title('Piloto corporativo\nde 90 días.',{size:28}),
+const s8 = { bg:DARK, els:[
+  ...fondo('valdivia-fondo.jpg'),
+  eyebrow('EL PILOTO',{color:STEEL}),
+  title('Piloto corporativo\nde 90 días.',{size:28,color:WHITE}),
   ...P8.flatMap((t,i)=>{ const col=i%2, row=(i-col)/2;
-    const x=M+col*4.25, y=3.25+row*0.78; return [
+    const x=M+col*4.25, y=3.9+row*1.25; return [
       ell(x+0.03,y+0.1,0.16,GREEN),
-      txt(t,x+0.36,y,3.7,0.6,{size:12.5,color:INK,bold:true,lh:1.22}),
+      txt(t,x+0.36,y,3.7,0.6,{size:12.5,color:WHITE,bold:true,lh:1.22}),
     ];}),
-  rrect(M,6.55,CW,1.3,{fill:BG2,line:LINE}),
+  rrect(M,9.0,CW,1.4,{r:0.16,fill:WHITE,alpha:88,line:WHITE,lineAlpha:70}),
   txt('Al cierre, la empresa revisa los indicadores agregados y los criterios de éxito acordados para decidir el siguiente paso.',
-      M+0.34,6.85,CW-0.68,0.75,{size:12.5,color:INK2,lh:1.3}),
-  ...franja('valdivia.jpg',8.35,3.20,{alpha:78}),
-  nota('El piloto busca validar problema, solución, adopción, operación y disposición a pagar. Sin precio en esta etapa.'),
+      M+0.4,9.35,CW-0.8,0.75,{size:12.5,color:ICE,lh:1.3}),
+  nota('El piloto busca validar problema, solución, adopción, operación y disposición a pagar. Sin precio en esta etapa.',{color:STEEL}),
 ], notes:'La carta de intención no es parte del piloto: puede ser un paso comercial posterior.' };
 
 /* ------------------------------------------------------- 9 · CIERRE */
+/* Sin fotografía a propósito: los datos de contacto tienen que leerse sin competencia. */
 const s9 = { bg:DARK, els:[
-  ...franja('vina.jpg',0,4.60,{veil:DARK,alpha:58}),
   img('logo-blanco.png',M,1.02,0.44,0.466),
   txt('APLICA TU SEGURO',M+0.62,1.11,5,0.3,{size:11.5,bold:true,cs:3,color:WHITE,valign:'middle'}),
-  txt('¿Tendría sentido validar\nAplica tu Seguro con un grupo\nde sus colaboradores?',M,5.85,CW,2.2,
+  txt('¿Tendría sentido validar\nAplica tu Seguro con un grupo\nde sus colaboradores?',M,3.5,CW,2.2,
       {size:30,bold:true,color:WHITE,lh:1.16}),
-  txt('Conversemos sobre el alcance y los criterios de un piloto de 90 días.',M,8.2,7.9,0.4,
+  txt('Conversemos sobre el alcance y los criterios de un piloto de 90 días.',M,5.45,7.9,0.4,
       {size:15,color:ICE}),
-  regla(8.95),
-  rrect(M,9.5,6.3,2.0,{r:0.16,fill:WHITE,alpha:88,line:WHITE,lineAlpha:70}),
-  txt('Diego Córdova E.',M+0.4,9.8,5.5,0.32,{size:15.5,bold:true,color:WHITE}),
-  txt('Fundador · Aplica tu Seguro',M+0.4,10.18,5.5,0.28,{size:11.5,color:ICE}),
-  txt('+569 8495 3941',M+0.4,10.6,3,0.28,{size:12.5,color:WHITE}),
-  txt('hola@aplicatuseguro.cl',M+0.4,10.94,5.5,0.28,{size:12.5,color:WHITE,link:'mailto:hola@aplicatuseguro.cl'}),
+  regla(6.5),
+  rrect(M,7.1,CW,2.95,{r:0.16,fill:WHITE,alpha:88,line:WHITE,lineAlpha:70}),
+  txt('CONTACTO',M+0.45,7.52,CW-0.9,0.26,{size:10,bold:true,cs:2.2,color:STEEL}),
+  txt('Diego Córdova E.',M+0.45,7.9,CW-0.9,0.42,{size:20,bold:true,color:WHITE}),
+  txt('Fundador · Aplica tu Seguro',M+0.45,8.38,CW-0.9,0.3,{size:13,color:ICE}),
+  rect(M+0.45,8.9,CW-0.9,0.012,{fill:WHITE,alpha:65}),
+  txt('+569 8495 3941',M+0.45,9.12,4,0.32,{size:14.5,color:WHITE}),
+  txt('hola@aplicatuseguro.cl',M+0.45,9.52,CW-0.9,0.32,{size:14.5,color:WHITE,link:'mailto:hola@aplicatuseguro.cl'}),
   nota('Aplica tu Seguro está en validación comercial. Todos los datos de esta presentación son sintéticos y no corresponden a resultados de clientes.',
        {y:12.35,color:STEEL,size:10.5}),
 ], notes:'Hacer la pregunta y quedarse callado.' };

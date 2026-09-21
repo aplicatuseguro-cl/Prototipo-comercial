@@ -58,24 +58,28 @@ que nada se desborda en un computador sin Inter.
 ## Imágenes
 
 Las fotografías originales viven en `img/fotos/` y `prep-fotos.py` genera desde ahí los
-archivos que usa el deck: recorta cada una a la proporción exacta de su franja, con el
-punto focal declarado en el script, y baja saturación y contraste.
+archivos que usa el deck: recorta cada una al encuadre que le corresponde, con el punto
+focal declarado en el script, y le baja saturación y contraste.
+
+El tratamiento es uno solo, el helper `fondo()` de `deck.js`: **la fotografía ocupa la
+lámina completa bajo un velo navy casi opaco**. La imagen queda como textura y el texto
+blanco manda. La única excepción es la portada, donde la foto va en una franja horizontal
+sobre fondo navy.
 
 | Archivo | Lámina | Uso |
 |---|---|---|
-| `santiago.jpg` | 1 · Portada | Franja central sobre fondo navy |
-| `atacama.jpg` | 2 · El problema | Franja bajo el título |
-| `patagonia-fondo.jpg` | 4 · La solución | Fondo de lámina completa, casi opaco: textura |
-| `valdivia.jpg` | 8 · El piloto | Franja al pie |
-| `vina.jpg` | 9 · Cierre | Franja superior a sangre |
+| `santiago.jpg` | 1 · Portada | Franja horizontal (excepción) |
+| `atacama-fondo.jpg` | 2 · El problema | Fondo de lámina completa |
+| `patagonia-fondo.jpg` | 4 · La solución | Fondo de lámina completa |
+| `valdivia-fondo.jpg` | 8 · El piloto | Fondo de lámina completa |
 
 Las láminas 3, 5, 6 y 7 no llevan fotografía: su contenido ya es denso y el aire les sienta
-mejor. Todas las franjas van atenuadas por un velo (`franja()` en `deck.js`) para que la
-imagen acompañe al texto sin competir con él; si alguna se ve demasiado presente, subir su
-`alpha` la aclara y bajarlo la oscurece.
+mejor. La 9 tampoco, y es deliberado: los datos de contacto tienen que leerse sin competencia.
+Por eso `img/fotos/vina.jpg` se conserva como original pero hoy no se usa en ninguna lámina.
 
-Para cambiar una fotografía: dejar la nueva en `img/fotos/` con el mismo nombre, ajustar su
-punto focal en `prep-fotos.py`, y volver a generar.
+Si una fotografía se ve demasiado presente, subir el `alpha` de `fondo()` la aclara y bajarlo
+la oscurece; el valor actual es 17 para las cuatro. Para cambiar una foto: dejar la nueva en
+`img/fotos/` con el mismo nombre, ajustar su punto focal en `prep-fotos.py`, y volver a generar.
 
 ## Datos
 

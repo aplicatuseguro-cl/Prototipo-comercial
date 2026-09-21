@@ -22,13 +22,14 @@ OUT  = os.path.join(BASE, 'img')
 TRIM_IZQ = 0.022
 
 FOTOS = [
-    # origen           salida              proporción     centro v.  centro h.  saturación
-    ('santiago.jpg',  'santiago.jpg',      10 / 4.80,     0.46,      0.50,      0.70),
-    ('atacama.jpg',   'atacama.jpg',       10 / 3.00,     0.45,      0.50,      0.68),
-    ('valdivia.jpg',  'valdivia.jpg',      10 / 3.20,     0.48,      0.50,      0.68),
-    ('vina.jpg',      'vina.jpg',          10 / 4.60,     0.45,      0.50,      0.70),
-    # fondo de lámina completa: se usa muy atenuado, como textura
-    ('patagonia.jpg', 'patagonia-fondo.jpg', 10 / 13.333, 0.42,      0.62,      0.66),
+    # origen           salida                 proporción    centro v.  centro h.  saturación
+    # Portada: única franja horizontal, sobre fondo navy.
+    ('santiago.jpg',  'santiago.jpg',         10 / 4.80,    0.46,      0.50,      0.70),
+    # Fondos de lámina completa: se usan casi opacos, como textura tras el texto.
+    ('atacama.jpg',   'atacama-fondo.jpg',    10 / 13.333,  0.50,      0.58,      0.66),
+    ('patagonia.jpg', 'patagonia-fondo.jpg',  10 / 13.333,  0.42,      0.62,      0.66),
+    ('valdivia.jpg',  'valdivia-fondo.jpg',   10 / 13.333,  0.50,      0.30,      0.66),
+    # vina.jpg queda sin recorte: la lámina de cierre va deliberadamente sin fotografía.
 ]
 
 def recorte(im, aspect, anchor_v, anchor_h):
