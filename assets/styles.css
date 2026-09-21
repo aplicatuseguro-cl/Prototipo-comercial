@@ -272,6 +272,7 @@ h1,h2,h3,h4{margin:0;font-weight:640;letter-spacing:-.022em;line-height:1.1}
 .bar-lg{height:14px}
 .uf{font-size:29px;font-weight:660;letter-spacing:-.028em;line-height:1.05}
 .uf small{display:block;font-size:13.5px;font-weight:480;color:var(--ink-3);letter-spacing:0;margin-top:3px}
+.uf small.uf-ref{font-size:12px;font-weight:440;color:var(--ink-4);margin-top:5px}
 .benefit-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;transition:box-shadow .2s var(--ease),border-color .2s var(--ease)}
 .benefit-card:hover{box-shadow:var(--shadow-m)}
 .benefit-card.is-alert{border-color:#F0DCB8;background:linear-gradient(180deg,#FFFCF6 0%,#fff 46%)}

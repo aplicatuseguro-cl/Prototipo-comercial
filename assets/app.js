@@ -6,6 +6,7 @@
 const $  = (s, r=document) => r.querySelector(s);
 const $$ = (s, r=document) => [...r.querySelectorAll(s)];
 const money = n => "$" + Math.round(n).toLocaleString("es-CL");
+const ufFmt = n => (n / DEMO.uf).toFixed(2).replace(/0+$/,"").replace(/\.$/,"").replace(".", ",") + " UF";
 
 const ICON = {
   arrow:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
@@ -257,6 +258,7 @@ function renderCoberturas(){
 /* ---------------- Mis beneficios ---------------- */
 function renderBeneficios(){
   $("#polizaNote").textContent = `Período simulado: ${DEMO.poliza.desde} – ${DEMO.poliza.hasta}`;
+  $("#ufNota").textContent = DEMO.ufNota;
   const o = DEMO.beneficios[2];
   $("#alertOptica").innerHTML = `
     <div class="alertbox">
@@ -289,7 +291,8 @@ function renderBeneficios(){
           <div class="row" style="gap:9px"><div class="h3">${b.titulo}</div>${done?'<span class="tag tag-ok">Completado</span>':b.alerta?'<span class="tag tag-warn">Por vencer</span>':""}</div>
           <div class="small">${b.cobertura}</div>
         </div>
-        <div class="uf num" style="text-align:right">${money(usado)} <span style="color:var(--ink-4);font-weight:480">de ${money(b.tope)}</span></div>
+        <div class="uf num" style="text-align:right">${money(usado)} <span style="color:var(--ink-4);font-weight:480">de ${money(b.tope)}</span>
+          <small class="uf-ref">≈ ${ufFmt(usado)} de ${ufFmt(b.tope)}</small></div>
       </div>
       <div class="bar bar-lg"><span class="${fill}" data-w="${pct}"></span></div>
       <div class="small" style="margin-top:14px;color:var(--ink-2)">${msg}</div>

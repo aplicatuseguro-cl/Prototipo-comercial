@@ -6,6 +6,8 @@
    ========================================================================== */
 
 const DEMO = {
+  uf: 39850,
+  ufNota: "Equivalencias en UF referenciales, calculadas con UF = $39.850 (valor simulado).",
   poliza: { desde: "1 ene 2026", hasta: "31 dic 2026" },
 
   empresa: {
@@ -227,9 +229,9 @@ const DEMO = {
 
   valorEmpresa:{
     cifras:[
-      { v:"$8,4 MM", k:"Beneficios de salud gestionados" },
-      { v:"$2,1 MM", k:"Reembolsos potencialmente identificados en este escenario" },
-      { v:"$1,18 MM", k:"Beneficios potencialmente aprovechables" }
+      { v:"$8.400.000", k:"Beneficios de salud gestionados" },
+      { v:"$2.100.000", k:"Reembolsos potencialmente identificados en este escenario" },
+      { v:"$1.180.000", k:"Beneficios potencialmente aprovechables" }
     ],
     disclaimer:"Datos simulados para ilustrar el tipo de información agregada que podría entregar Aplica tu Seguro.",
     noSumar:"Las tres cifras representan conceptos diferentes y no deben sumarse entre sí.",
