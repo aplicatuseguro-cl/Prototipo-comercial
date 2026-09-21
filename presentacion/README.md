@@ -32,17 +32,17 @@ Cada slide lleva **notas del presentador** con la intención y la objeción prob
 
 ## Antes de enviarla por correo
 
-1. **Abre el acceso al prototipo.** El enlace de la slide 6 es privado: desde el menú
+1. **Abre el acceso al prototipo.** El enlace de la lámina 7 es privado: desde el menú
    *Share* del artifact hay que dar acceso, o el destinatario verá una pantalla de acceso denegado.
-2. **Tipografía.** Las slides declaran **Inter**, la misma del prototipo. Si el computador no
-   la tiene instalada, PowerPoint sustituye por Arial y el diseño se mantiene: está verificado,
-   no se desborda ningún texto. Para que calce exacto, Inter es gratuita en Google Fonts.
+2. **Instala Inter si puedes.** Las láminas la declaran (ver *Tipografía* más abajo). Si el
+   computador no la tiene, PowerPoint sustituye por Arial y el diseño se mantiene: está
+   verificado, no se desborda ningún texto. Inter es gratuita en Google Fonts.
 
 ## Cómo se genera
 
 ```bash
 npm install            # pptxgenjs
-python3 prep-fotos.py  # img/fotos/ → las franjas fotográficas de img/
+python3 prep-fotos.py  # img/fotos/ → los recortes que usa el deck, en img/
 node render-pptx.js    # → .pptx
 node render-html.js    # → deck.html, .pdf y qa/*.png
 ```
@@ -71,15 +71,28 @@ sobre fondo navy.
 | `santiago.jpg` | 1 · Portada | Franja horizontal (excepción) |
 | `atacama-fondo.jpg` | 2 · El problema | Fondo de lámina completa |
 | `patagonia-fondo.jpg` | 4 · La solución | Fondo de lámina completa |
+| `vina-fondo.jpg` | 6 · Privacidad | Fondo de lámina completa |
 | `valdivia-fondo.jpg` | 8 · El piloto | Fondo de lámina completa |
 
-Las láminas 3, 5, 6 y 7 no llevan fotografía: su contenido ya es denso y el aire les sienta
-mejor. La 9 tampoco, y es deliberado: los datos de contacto tienen que leerse sin competencia.
-Por eso `img/fotos/vina.jpg` se conserva como original pero hoy no se usa en ninguna lámina.
+Quedan claras las láminas 3, 5 y 7, y la 9 va sobre navy plano sin fotografía: los datos
+de contacto tienen que leerse sin competencia. Así las láminas con foto y sin foto se van
+alternando a lo largo del recorrido.
 
 Si una fotografía se ve demasiado presente, subir el `alpha` de `fondo()` la aclara y bajarlo
-la oscurece; el valor actual es 17 para las cuatro. Para cambiar una foto: dejar la nueva en
+la oscurece; el valor actual es 17 para las cinco. Para cambiar una foto: dejar la nueva en
 `img/fotos/` con el mismo nombre, ajustar su punto focal en `prep-fotos.py`, y volver a generar.
+
+## Tipografía
+
+El deck usa **Inter**, la misma del prototipo, y replica su tracking: los titulares van
+ligeramente cerrados (de −0,034 em en la portada a −0,016 em en los subtítulos) y las
+versalitas abiertas (0,16 em en la marca, 0,1 em en los rótulos de sección, 0,06 em en los
+chips). Esos valores están en `deck.js` como constantes `TR_*`, tomadas una a una de
+`assets/styles.css`, y `tr(em, cuerpo)` los convierte a los puntos que espera PowerPoint.
+
+Una diferencia que no se puede cerrar: el prototipo usa los pesos intermedios de Inter
+(420, 540, 620, 660) y el formato PPTX sólo distingue regular y negrita, así que los
+titulares del deck van en 700.
 
 ## Datos
 

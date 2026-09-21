@@ -29,7 +29,7 @@ FOTOS = [
     ('atacama.jpg',   'atacama-fondo.jpg',    10 / 13.333,  0.50,      0.58,      0.66),
     ('patagonia.jpg', 'patagonia-fondo.jpg',  10 / 13.333,  0.42,      0.62,      0.66),
     ('valdivia.jpg',  'valdivia-fondo.jpg',   10 / 13.333,  0.50,      0.30,      0.66),
-    # vina.jpg queda sin recorte: la lámina de cierre va deliberadamente sin fotografía.
+    ('vina.jpg',      'vina-fondo.jpg',       10 / 13.333,  0.48,      0.32,      0.66),
 ]
 
 def recorte(im, aspect, anchor_v, anchor_h):
