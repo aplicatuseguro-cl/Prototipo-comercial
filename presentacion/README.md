@@ -1,14 +1,15 @@
 # Aplica tu Seguro · Presentación comercial
 
-Ocho slides para reuniones de venta y para enviar por correo.
-Mismo logo, paleta y tipografía que el prototipo comercial.
+Nueve láminas en **formato vertical (10 × 13,333 pulgadas, proporción 3:4)** para
+reuniones de venta y para enviar por correo. Mismo logo, paleta y tipografía que el
+prototipo comercial.
 
 ## Entregables
 
 | Archivo | Uso |
 |---|---|
 | `Aplica-tu-Seguro-Presentacion-Comercial-v2.pptx` | Editable en PowerPoint / Keynote / Google Slides |
-| `Aplica-tu-Seguro-Presentacion-Comercial-v2.pdf` | Para adjuntar al correo (2,3 MB, enlaces y QR activos) |
+| `Aplica-tu-Seguro-Presentacion-Comercial-v2.pdf` | Para adjuntar al correo (1,9 MB, enlaces y QR activos) |
 
 La versión 1 fue retirada: contenía afirmaciones de resultado que no corresponden
 a una propuesta en validación.
@@ -41,23 +42,40 @@ Cada slide lleva **notas del presentador** con la intención y la objeción prob
 
 ```bash
 npm install            # pptxgenjs
+python3 prep-fotos.py  # img/fotos/ → las franjas fotográficas de img/
 node render-pptx.js    # → .pptx
 node render-html.js    # → deck.html, .pdf y qa/*.png
 ```
 
 `deck.js` es la única fuente de contenido y posiciones: ambos formatos salen de ahí, así que
-un cambio de texto se hace una sola vez. Las coordenadas están en pulgadas sobre 13,333 × 7,5.
+un cambio de texto se hace una sola vez. Las coordenadas están en pulgadas sobre 10 × 13,333
+(vertical). El alto de la lámina es la dimensión larga: al mover un bloque hay que revisar que
+el pie de página siga cayendo alrededor de `y = 12,5`.
 
 `node render-html.js --fallback` rinde la versión con la tipografía sustituida, para comprobar
 que nada se desborda en un computador sin Inter.
 
 ## Imágenes
 
-Los paisajes de `img/` son **ilustraciones originales generadas por código**
-(`gen_paisajes.py` → SVG → PNG): Torres del Paine, desierto de Atacama, altiplano,
-costa del Pacífico y fiordos patagónicos. No son fotografías y no tienen restricción
-de licencia. Para reemplazarlas por fotos reales basta sobrescribir el PNG del mismo
-nombre y volver a generar.
+Las fotografías originales viven en `img/fotos/` y `prep-fotos.py` genera desde ahí los
+archivos que usa el deck: recorta cada una a la proporción exacta de su franja, con el
+punto focal declarado en el script, y baja saturación y contraste.
+
+| Archivo | Lámina | Uso |
+|---|---|---|
+| `santiago.jpg` | 1 · Portada | Franja central sobre fondo navy |
+| `atacama.jpg` | 2 · El problema | Franja bajo el título |
+| `patagonia-fondo.jpg` | 4 · La solución | Fondo de lámina completa, casi opaco: textura |
+| `valdivia.jpg` | 8 · El piloto | Franja al pie |
+| `vina.jpg` | 9 · Cierre | Franja superior a sangre |
+
+Las láminas 3, 5, 6 y 7 no llevan fotografía: su contenido ya es denso y el aire les sienta
+mejor. Todas las franjas van atenuadas por un velo (`franja()` en `deck.js`) para que la
+imagen acompañe al texto sin competir con él; si alguna se ve demasiado presente, subir su
+`alpha` la aclara y bajarlo la oscurece.
+
+Para cambiar una fotografía: dejar la nueva en `img/fotos/` con el mismo nombre, ajustar su
+punto focal en `prep-fotos.py`, y volver a generar.
 
 ## Datos
 

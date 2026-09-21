@@ -6,7 +6,8 @@ const F = 'Inter';   // tipografía de marca; PowerPoint sustituye si no está i
 const IMG = f => path.join(__dirname, 'img', f);
 
 const pres = new pptxgen();
-pres.layout = 'LAYOUT_WIDE';
+pres.defineLayout({ name: 'VERTICAL', width: SW, height: SH });
+pres.layout = 'VERTICAL';
 pres.author = 'Aplica tu Seguro';
 pres.company = 'Aplica tu Seguro';
 pres.title = 'Aplica tu Seguro — Presentación comercial';

@@ -71,8 +71,13 @@ fs.writeFileSync(path.join(__dirname, out), html);
 console.log('HTML:', out);
 
 (async () => {
-  const { chromium } = require('/tmp/claude-0/-home-user-Prototipo-comercial/953be6a4-b4fa-5ffe-bea5-f9dca27b4778/scratchpad/node_modules/playwright-core');
-  const b = await chromium.launch({ executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args:['--no-sandbox'] });
+  const { chromium } = require('playwright-core');
+  // Chromium preinstalado en el entorno; si no está, playwright usa el suyo.
+  const bundled = (fs.globSync
+    ? fs.globSync('/opt/pw-browsers/chromium-*/chrome-linux/chrome')
+    : []).sort().pop();
+  const b = await chromium.launch({
+    ...(bundled ? { executablePath: bundled } : {}), args:['--no-sandbox'] });
   const p = await b.newPage({ viewport:{ width: Math.round(SW*96), height: Math.round(SH*96) } });
   const errs = []; p.on('pageerror', e => errs.push(e.message));
   await p.goto('file://' + path.join(__dirname, out), { waitUntil:'networkidle' });
